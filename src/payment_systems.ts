@@ -14,3 +14,11 @@ export class PaymentSystemExecutor {
 
     //TO DO: Create a method named “execute()” that steps through the workflow and prints the relevant information to the screen.
 }
+
+class CreditCard{}
+
+class BankDraft{}
+
+class OnlinePayment{}
+
+class OfflinePayment{}
