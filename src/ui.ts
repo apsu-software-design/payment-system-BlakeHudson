@@ -40,18 +40,18 @@ function showMainMenu() {
 }
 
 function showCreditCardPaymentMenu() {
-  paymentStrategy("creditcard");
+  paymentStrategy("creditcard")?.execute();
 }
 
 function showBankDraftPaymentMenu() {
-  paymentStrategy("bankdraft");
+  paymentStrategy("bankdraft")?.execute();
 }
 
 function showOnlinePaymentMenu() {
-  paymentStrategy("online");
+  paymentStrategy("online")?.execute();
 }
 
 function showOfflinePaymentMenu() {
-  paymentStrategy("offline");
+  paymentStrategy("offline")?.execute();
 }
 
