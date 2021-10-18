@@ -3,9 +3,11 @@ import readlineSync = require('readline-sync'); //for easier repeated prompts
 /**
  *  The PaymentSystemExecutor class is really a factory class
  *  that does the workflow steps outlined (read in data, validate it, encrypt it, and process it).
+ *  It requires two functions to be passed to the constructor
+ *  One to ask the user for the payment information needed for the specific payment type
+ *  Another to validate the information collected in the first function
  */
 export class PaymentSystemExecutor {
-    private payExec!: PaymentSystemExecutor;
     private gatherInfo: () => { [key: string]: string };
     private validate: (inputs: { [key: string]: string }) => boolean;
 
@@ -30,17 +32,24 @@ export class PaymentSystemExecutor {
 }
 
 /**
- * Abstract class for implementing a payment system method
+ * Abstract class for deriving a payment system method
+ * creates a PaymentSytemExecuter object with the two required functions to be implemented by the child class
  */
 export abstract class PaymentSystem{
    private payExec!: PaymentSystemExecutor;
    abstract gatherInfo: () => { [key: string]: string };
    abstract validatePayment: (inputs: { [key: string]: string }) => boolean;
 
-    // build and return methods for building a PaymentExecuter
+    /**
+     * builds a PaymentSystemExecuter object with paymentsystem specific methods passed to constructor
+     */
     build(): void {
         this.payExec = new PaymentSystemExecutor(this.gatherInfo, this.validatePayment);
     }
+    /**
+     * returns the created PaymentSystemExecuter object
+     * @returns 
+     */
     getExecuter(): PaymentSystemExecutor {
         return this.payExec;
     }

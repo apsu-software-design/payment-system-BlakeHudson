@@ -2,7 +2,7 @@
 //@author James Church
 
 import readlineSync = require('readline-sync'); //for easier repeated prompts
-import {paymentStrategy} from './payment_strategy';
+import {paymentStrategy} from './payment_strategy'; //used for selecting the apporpriate payment system object to build and execute
 
 /**
  * Function to run the UI

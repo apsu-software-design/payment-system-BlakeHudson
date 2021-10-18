@@ -1,5 +1,5 @@
 
-import * as payment_systems from './payment_systems';
+import * as payment_systems from './payment_systems';   //used for building various payment system objects
 
 /**
  * selects the appropriate payment system to execute based on input passed.
