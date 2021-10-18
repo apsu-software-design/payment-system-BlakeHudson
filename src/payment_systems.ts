@@ -84,12 +84,9 @@ export class CreditCardSystem extends PaymentSystem {
      * @returns true if payment information is valid for a credit card
      */
     validate(inputs: { [key: string]: string }): boolean {
-        let valid = /^[\w.' ]+$/.test(inputs.name) && /\d{15,16}/.test(inputs.creditCardNumber) && /\d\d\/\d\d/.test(inputs.creditCardExpirationDate);
-        if (valid) {
-            return true;
-        } else {
-            return false;
-        }
+        return /^[\w.' ]+$/.test(inputs.name) &&
+         /\d{15,16}/.test(inputs.creditCardNumber) && 
+         /\d\d\/\d\d/.test(inputs.creditCardExpirationDate);
     }
 }
 
@@ -122,12 +119,9 @@ export class BankDraft extends PaymentSystem {
      * @returns true if input is valid for an bank draft payment
      */
     validate(inputs: { [key: string]: string; }): boolean {
-        let valid = /^[\w.' ]+$/.test(inputs.name) && /\d{9}/.test(inputs.bankRoutingNumber) && /\d{6,12}/.test(inputs.bankAccountNumber);
-        if (valid) {
-            return true;
-        } else {
-            return false;
-        }
+        return /^[\w.' ]+$/.test(inputs.name) &&
+        /\d{9}/.test(inputs.bankRoutingNumber) &&
+        /\d{6,12}/.test(inputs.bankAccountNumber);
     }
 }
 
@@ -159,12 +153,8 @@ export class OnlinePayment extends PaymentSystem {
      * @returns true if input is valid for an online payment
      */
     validate(inputs: { [key: string]: string; }): boolean {
-        let valid = /^[\w@.]+$/.test(inputs.email) && /\w+/.test(inputs.paymentPassword);
-        if (valid) {
-            return true;
-        } else {
-            return false;
-        }
+        return /^[\w@.]+$/.test(inputs.email) &&
+         /\w+/.test(inputs.paymentPassword);
     }
 }
 
@@ -196,12 +186,8 @@ export class OfflinePayment extends PaymentSystem {
      * @returns true if input is valid for an offline payment
      */
     validate(inputs: { [key: string]: string; }): boolean {
-        let valid = /^[\w.' ]+$/.test(inputs.name) && /^[\w.' ]+$/.test(inputs.billingAddress);
-        if (valid) {
-            return true;
-        } else {
-            return false;
-        }
+        return /^[\w.' ]+$/.test(inputs.name) && 
+        /^[\w.' ]+$/.test(inputs.billingAddress);
     }
 }
 
